@@ -1,0 +1,78 @@
+{% extends 'admin/base.html' %} {% block content %}
+<div class="container mx-auto px-4 py-5">
+      <!-- Cards Section -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+            <!-- Each card has a unique color and icon -->
+            <div class="bg-blue-500 text-white rounded-lg shadow-lg p-4 flex flex-col items-center justify-center">
+                  <i class="bx bx-camera text-3xl"></i>
+                  <h2 class="text-xl font-semibold mt-3">مجموع الوسائط</h2>
+                  <p class="text-lg">{{ stats.media_count }}</p>
+            </div>
+            <div class="bg-green-500 text-white rounded-lg shadow-lg p-4 flex flex-col items-center justify-center">
+                  <i class="bx bx-user text-3xl"></i>
+                  <h2 class="text-xl font-semibold mt-3">مجموع الزيارات</h2>
+                  <p class="text-lg">{{ stats.visitors_count }}</p>
+            </div>
+            <div class="bg-yellow-500 text-white rounded-lg shadow-lg p-4 flex flex-col items-center justify-center">
+                  <i class="bx bx-data text-3xl"></i>
+                  <h2 class="text-xl font-semibold mt-3">استخدام التخزين</h2>
+                  <p class="text-lg">{{ stats.storage_used }}</p>
+            </div>
+            <div class="bg-red-500 text-white rounded-lg shadow-lg p-4 flex flex-col items-center justify-center">
+                  <i class="bx bx-trending-up text-3xl"></i>
+                  <h2 class="text-xl font-semibold mt-3">مشاهدات المقالات</h2>
+                  <p class="text-lg">{{ stats.post_views }}</p>
+            </div>
+      </div>
+
+      <!-- Table Section -->
+      <div class="bg-white rounded-lg shadow-lg p-4">
+            <table class="w-full table-auto border-collapse">
+                  <thead>
+                        <tr class="bg-gray-200 text-gray-600">
+                              <th class="px-4 py-2 text-xs font-semibold border">العنوان</th>
+                              <th class="px-4 py-2 text-xs font-semibold border">الفئة</th>
+                              <th class="px-4 py-2 text-xs font-semibold border">التاريخ</th>
+                              <th class="px-4 py-2 text-xs font-semibold border">المشاهدات</th>
+                              <th class="px-4 py-2 text-xs font-semibold border">الحالة</th>
+                              <th class="px-4 py-2 text-xs font-semibold border">التحكم</th>
+                        </tr>
+                  </thead>
+                  <tbody>
+                        {% for post in latest_table_posts %}
+                        <tr class="whitespace-no-wrap text-gray-800">
+                              <td class="px-4 py-2 text-sm border">{{ post.title }}</td>
+                              <td class="px-4 py-2 text-sm border">{{ post.category }}</td>
+                              <td class="px-4 py-2 text-sm border">{{ post.created_at.strftime('%Y-%m-%d') }}</td>
+                              <td class="px-4 py-2 text-sm border">{{ post.views }}</td>
+                              <td class="px-4 py-2 text-sm border">{{ post.status }}</td>
+
+
+                              <td class="px-4 py-2 text-sm border text-center">
+                                    <div class="flex justify-center space-x-2">
+                                          <a href="{{ url_for('admin.post', id=post.id) }}"
+                                                class="text-green-500 hover:text-green-700 transition duration-300 flex items-center space-x-1">
+                                                <i class="bx bx-show"></i>
+                                                <span>عرض</span>
+                                          </a>
+                                          <a href="{{ url_for('admin.edit_post', id=post.id) }}"
+                                                class="text-blue-500 hover:text-blue-700 transition duration-300 flex items-center space-x-1">
+                                                <i class="bx bx-edit"></i>
+                                                <span>تعديل</span>
+                                          </a>
+                                          <a href="{{ url_for('admin.delete_post', id=post.id) }}"
+                                                onclick="return confirm('هل أنت متأكد من حذف المقالة؟')"
+                                                class="text-red-500 hover:text-red-700 transition duration-300 flex items-center space-x-1">
+                                                <i class="bx bx-trash"></i>
+                                                <span>حذف</span>
+                                          </a>
+                                    </div>
+                              </td>
+
+                        </tr>
+                        {% endfor %}
+                  </tbody>
+            </table>
+      </div>
+</div>
+{% endblock %}

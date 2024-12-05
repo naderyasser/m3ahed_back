@@ -1,0 +1,47 @@
+{% extends 'public/base.html' %} {% block content %}
+<section class="relative bg-cover bg-center h-96"
+      style="background-image: url({{ url_for('uploaded_file', filename=post.banner) if post.banner else url_for('static', filename='images/default-banner.png') }});">
+      <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white">
+            <h1 class="text-4xl font-bold">{{ post.title }}</h1>
+            <div class="mt-4 text-lg">
+                  <span>Views: {{ post.views }}</span> |
+                  <span>Date: {{ post.created_at.strftime('%b %d, %Y') }}</span>
+            </div>
+            <div class="mt-2">
+                  <a href="#" class="text-white underline">Home</a>
+                  <span>//</span>
+                  <span>{{ post.category }}</span>
+            </div>
+      </div>
+</section>
+
+<section class="py-8">
+      <div class="container mx-auto px-4">
+            <div class="text-sm border-b border-gray-200 pb-4 mb-4">
+                  <h2 class="font-cinzel font-bold text-3xl mb-2">{{ post.title }}</h2>
+                  <div class="font-cairo text-gray-700">{{ post.content | safe }}</div>
+            </div>
+            {% if media %}
+            <h3 class="font-cinzel text-2xl mb-3">Media Gallery</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {% for item in media %}
+                  <div class="bg-white rounded overflow-hidden shadow-lg">
+                        {% if item.media_type == 'image' %}
+                        <img src="{{ url_for('uploaded_file', filename=item.name) }}" alt="Media Image" class="w-full">
+                        {% elif item.media_type == 'video' %}
+                        <video controls src="{{ url_for('uploaded_file', filename=item.name) }}" class="w-full"></video>
+                        {% elif item.media_type == 'audio' %}
+                        <audio controls src="{{ url_for('uploaded_file', filename=item.name) }}" class="w-full"></audio>
+                        {% elif item.media_type == 'document' %}
+                        <a href="{{ url_for('uploaded_file', filename=item.name) }}"
+                              class="block p-4 text-center text-blue-600 hover:text-blue-800">Download Document</a> {%
+                        endif %}
+                  </div>
+                  {% endfor %}
+            </div>
+            {% else %}
+            <p class="text-gray-600">No media available.</p>
+            {% endif %}
+      </div>
+</section>
+{% endblock %}

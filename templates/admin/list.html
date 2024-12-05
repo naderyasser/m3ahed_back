@@ -1,0 +1,72 @@
+{% extends 'admin/base.html' %} {% block content %}
+<div class="container mx-auto px-4 py-5">
+
+
+      <!-- Table Section -->
+      <div class="bg-white rounded-lg shadow-lg p-4">
+            <br>
+            <h2 class="text-xl font-semibold mb-4 center-text text-center 
+            "> {{ category }}</h2>
+            <br>
+
+            <table class="w-full table-auto border-collapse">
+                  <thead>
+                        <tr class="bg-gray-200 text-gray-600">
+                              <th class="px-4 py-2 text-xs font-semibold border">العنوان</th>
+                              <th class="px-4 py-2 text-xs font-semibold border">الفئة</th>
+                              <th class="px-4 py-2 text-xs font-semibold border">التاريخ</th>
+                              <th class="px-4 py-2 text-xs font-semibold border">المشاهدات</th>
+                              <th class="px-4 py-2 text-xs font-semibold border">الحالة</th>
+                              <th class="px-4 py-2 text-xs font-semibold border">التحكم</th>
+                        </tr>
+                  </thead>
+                  <tbody>
+                        {% if latest_table_posts %} {% for post in latest_table_posts %}
+                        <tr class="whitespace-no-wrap text-gray-800">
+                              <td class="px-4 py-2 text-sm border">{{ post.title }}</td>
+                              <td class="px-4 py-2 text-sm border">{{ post.category }}</td>
+                              <td class="px-4 py-2 text-sm border">{{ post.created_at.strftime('%Y-%m-%d') }}</td>
+                              <td class="px-4 py-2 text-sm border">{{ post.views }}</td>
+                              <td class="px-4 py-2 text-sm border">{{ post.status }}</td>
+
+
+                              <td class="px-4 py-2 text-sm border text-center">
+                                    <div class="flex justify-center space-x-2">
+                                          <a href="{{ url_for('admin.post', id=post.id) }}"
+                                                class="text-green-500 hover:text-green-700 transition duration-300 flex items-center space-x-1">
+                                                <i class="bx bx-show"></i>
+                                                <span>عرض</span>
+                                          </a>
+                                          <a href="{{ url_for('admin.edit_post', id=post.id) }}"
+                                                class="text-blue-500 hover:text-blue-700 transition duration-300 flex items-center space-x-1">
+                                                <i class="bx bx-edit"></i>
+                                                <span>تعديل</span>
+                                          </a>
+                                          <a href="{{ url_for('admin.delete_post', id=post.id) }}"
+                                                onclick="return confirm('هل أنت متأكد من حذف المقالة؟')"
+                                                class="text-red-500 hover:text-red-700 transition duration-300 flex items-center space-x-1">
+                                                <i class="bx bx-trash"></i>
+                                                <span>حذف</span>
+                                          </a>
+                                    </div>
+                              </td>
+
+
+                              {% endfor %} {% else %}
+                              <td colspan="6" class="text-center py-4">
+
+                                    لا توجد محتويات
+
+                                    <i class="bx bx-sad text-2xl"></i>
+
+
+                              </td>
+                              {% endif %}
+                        </tr>
+
+
+                  </tbody>
+            </table>
+      </div>
+</div>
+{% endblock %}

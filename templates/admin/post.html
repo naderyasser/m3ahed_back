@@ -1,0 +1,161 @@
+{% extends 'admin/base.html' %} {% block content %}
+<div class="container mx-auto px-4 py-5">
+      <div class="flex justify-between items-center mb-6">
+            <button onclick="document.getElementById('editModel').style.display='block'"
+                  class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                  تعديل المحتوى
+            </button>
+            <button
+                  onclick="if(confirm('هل أنت متأكد من أنك تريد حذف هذا المنشور؟')) location.href='{{ url_for('admin.delete_post', id=post.id) }}';"
+                  class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                  حذف المنشور
+            </button>
+      </div>
+
+      <!-- تفاصيل المنشور -->
+      <div class="bg-white rounded-lg shadow-lg p-6 mb-4">
+            <h1 class="text-2xl font-bold text-center mb-4">{{ post.title }}</h1>
+            <p>{{ post.content }}</p>
+            {% if post.banner %}
+            <img src="{{ url_for('uploaded_file', filename=post.banner) }}" alt="Banner Image"
+                  class="mx-auto my-4 rounded" /> {% endif %}
+      </div>
+
+      <!-- زر إضافة الوسائط -->
+      <button onclick="document.getElementById('mediaModal').style.display='block'"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4">
+            إضافة وسائط
+      </button>
+      <!-- mediaModal -->
+      <div id="mediaModal"
+            class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center hidden">
+            <div class="bg-white rounded-lg shadow-lg p-6 w-1/2 mt-[10%] text-right relative mr-[30%]">
+                  <h2 class="text-lg font-semibold mb-4">إضافة وسائط</h2>
+                  <form method="POST" enctype="multipart/form-data" class="flex gap-4">
+                        <input type="file" name="file" required
+                              class="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" />
+                        <select name="media_type" required
+                              class="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500">
+                              <option value="">اختر نوع الوسائط</option>
+                              <option value="image">صورة</option>
+                              <option value="video">فيديو</option>
+                              <option value="audio">صوت</option>
+                              <option value="document">مستند</option>
+                        </select>
+                        <button type="submit"
+                              class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                              إضافة وسائط
+                        </button>
+                  </form>
+                  <button onclick="document.getElementById( 'mediaModal' ).style.display='none'"
+                        class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4">
+                        إلغاء
+                  </button>
+            </div>
+      </div>
+      <!-- editModel -->
+      <div id="editModel"
+            class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center hidden">
+            <div class="bg-white rounded-lg shadow-lg p-6 w-1/2 mt-[10%] text-right relative mr-[30%]">
+                  <h2 class="text-lg font-semibold mb-4">تعديل المنشور</h2>
+                  <form action="/admin/edit/{{ post.id }}" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="{{ post.id }}">
+                        <div class="mb-4">
+                              <label for="title" class="block text-sm font-medium text-gray-800 mb-1">العنوان</label>
+                              <input type="text" name="title" id="title"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500"
+                                    value="{{ post.title }}" required />
+                        </div>
+                        <div class="mb-4">
+                              <label for="category" class="block text-sm font-medium text-gray-800 mb-1">التصنيف</label>
+                              <select name="category" id="category"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500"
+                                    required>
+                                    <option value="article" {% if post.category=='article' %} selected {% endif %}>مقال
+                                    </option>
+                                    <option value="news" {% if post.category=='news' %} selected {% endif %}>خبر
+                                    </option>
+                                    <option value="consultation" {% if post.category=='consultation' %} selected {%
+                                          endif %}>استشارة</option>
+                                    <option value="audio" {% if post.category=='audio' %} selected {% endif %}>صوتي
+                                    </option>
+                                    <option value="video" {% if post.category=='video' %} selected {% endif %}>فيديو
+                                    </option>
+                                    <option value="success-story" {% if post.category=='success-story' %} selected {%
+                                          endif %}>قصة نجاح</option>
+                                    <option value="research" {% if post.category=='research' %} selected {% endif %}>بحث
+                                    </option>
+                                    <option value="gallery" {% if post.category=='gallery' %} selected {% endif %}>معرض
+                                    </option>
+                              </select>
+                        </div>
+
+                        <div class="mb-4">
+                              <label for="content" class="block text-sm font-medium text-gray-800 mb-1">المحتوى</label>
+                              <textarea name="content" id="content" rows="6"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500"
+                                    required>{{ post.content }}</textarea>
+                        </div>
+                        <div class="mb-4">
+                              <label for="status" class="block text-sm font-medium text-gray-800 mb-1">الحالة</label>
+                              <select name="status" id="status"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500"
+                                    required>
+                                    <option value="published" {% if post.status=='published' %} selected {% endif %}>نشر
+                                    </option>
+                                    <option value="draft" {% if post.status=='draft' %} selected {% endif %}>مسودة
+                                    </option>
+                              </select>
+                        </div>
+                        <button type="submit"
+                              class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                              تعديل المنشور
+                        </button>
+                  </form>
+                  <button onclick="document.getElementById( 'editModel' ).style.display='none'"
+                        class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4">
+                        إلغاء
+                  </button>
+            </div>
+      </div>
+
+
+      <!-- قائمة الوسائط -->
+      <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-lg font-semibold mb-4">قائمة الوسائط</h2>
+            <div class="grid grid-cols-3 gap-4">
+                  {% for media in post.media %}
+                  <div class="relative">
+                        {% if media.media_type == 'image' %}
+                        <img src="{{ url_for( 'uploaded_file' , filename=media.name) }}" alt="Media Image"
+                              class="w-full h-auto rounded" /> {% elif media.media_type == 'video' %}
+                        <video controls class="w-full rounded">
+                              <source src="{{ url_for( 'uploaded_file' , filename=media.name) }}" type="video/mp4" />
+                        </video> {% elif media.media_type == 'audio' %}
+                        <audio controls class="w-full">
+                              <source src="{{ url_for( 'uploaded_file' , filename=media.name) }}" type="audio/mpeg" />
+                        </audio> {% elif media.media_type == 'document' %}
+                        <a href="{{ url_for( 'uploaded_file' , filename=media.name) }}" target="_blank"
+                              class="text-blue-600 hover:text-blue-700">تحميل</a> {% endif %}
+                        <button
+                              onclick="if(confirm( 'هل تريد حقًا حذف هذه الوسائط؟' )) location.href='{{ url_for('admin.delete_media', id=media.id) }}' ;"
+                              class="absolute top-1 right-1 bg-red-500 hover:bg-red-600 text-white p-1 rounded-full focus:outline-none focus:shadow-outline">
+                              <i class="bx bx-x"></i>
+                        </button>
+                  </div>
+                  {% else %}
+                  <p>لا توجد وسائط متاحة.</p>
+                  {% endfor %}
+            </div>
+      </div>
+</div>
+
+<script>
+      // Close modal on outside click
+      window.onclick = function (event) {
+            if (event.target == document.getElementById("mediaModal")) {
+                  document.getElementById("mediaModal").style.display = "none";
+            }
+      };
+</script>
+{% endblock %}

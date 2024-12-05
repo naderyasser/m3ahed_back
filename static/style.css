@@ -1,0 +1,1050 @@
+@import url("https://fonts.googleapis.com/css2?family=Zain:wght@200;300;400;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+/* CSS Variables */
+:root {
+  --scroll-thumb: #ef5a5a;
+  --scroll-thumb-hover: #ce4141;
+  --navbar-bg: rgba(187, 184, 184, 0.605);
+  --link-hover-bg: #e2dddd;
+  --button-bg: #f7ab14;
+  --button-hover-bg: #9a9898;
+  font-family: "Roboto", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #373737;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-thumb-hover);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
+  background-color: white;
+  padding: 0 3%;
+  backdrop-filter: blur(20px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.navbar.scrolled {
+  background-color: var(--navbar-bg);
+}
+
+.nav-links a {
+  font-family: "Segoe UI", sans-serif;
+  color: rgb(29, 25, 25);
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+  background-color: var(--link-hover-bg);
+}
+
+.btn-join {
+  background-color: var(--button-bg);
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.btn-join:hover {
+  background-color: var(--button-hover-bg);
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
+  background-color: white;
+  padding: 0px 3%;
+  backdrop-filter: blur(20px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.navbar.scrolled {
+  background-color: rgba(187, 184, 184, 0.605);
+  opacity: 1;
+}
+
+.navbar.scrolled .nav-links a {
+  color: rgba(0, 0, 0, 0.95);
+  opacity: 1;
+}
+
+.logo {
+  max-width: 300px;
+}
+.logo img {
+  width: 100px;
+  height: 80px;
+}
+
+.nav-links-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+  padding: 0px 10px;
+}
+
+.nav-links a {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(29, 25, 25);
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+  background-color: #e2dddd;
+  font-size: 16px;
+}
+
+.btn-join {
+  margin-left: 40px;
+  margin-top: 10px;
+  background-color: #f7ab14;
+  color: white;
+  scale: 1.8;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  border-color: #00000000;
+  border-radius: 3px;
+}
+
+.btn-join:hover {
+  scale: 1.7;
+  transition: 0.3s;
+
+  background-color: #9a9898;
+}
+
+.nav-icons img {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-right: 100;
+  background-color: rgb(245, 245, 245);
+}
+.nav-links {
+  font-weight: bold;
+  border-radius: 10rem;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  margin: 0;
+  padding: 0 3%;
+  display: flex;
+}
+
+ul li {
+  list-style: none;
+  margin: 0 20px;
+  transition: 0.8s;
+}
+
+ul li a {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  padding: 5px;
+  font-size: 16px;
+  font-family: sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  transition: 19px;
+}
+
+ul:hover li a {
+  transform: scale(1);
+  opacity: 0.2;
+  filter: blur(1.5px);
+}
+
+ul li a:hover {
+  transform: scale(1.2);
+  opacity: 1;
+  filter: blur(0);
+  text-decoration: none;
+  color: #fff;
+}
+
+ul li a:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  background: #f7ab14;
+  transition: 0.4s;
+  transform-origin: right;
+  transform: scaleX(0);
+  z-index: -1;
+}
+
+ul li a:hover:before {
+  transition: transform 1.2s;
+  transform-origin: left;
+  transform: scaleX(1);
+}
+.nav-icons {
+  padding: 0px 5px;
+  justify-content: space-between;
+  width: auto;
+  cursor: pointer;
+}
+
+.nav-icons:hover {
+  transition: 1s;
+  transform: scale(1);
+  opacity: 101;
+  filter: blur(0px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide {
+  display: none;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Changed this to contain */
+}
+
+.about-us {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: left;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.logo {
+  max-width: 150px;
+}
+
+.text-content {
+  margin-top: 200px;
+
+  float: left;
+}
+.text-content p {
+  font-size: 3.1em;
+  font-family: "Zain", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #151313;
+  line-height: 1.6;
+}
+.text-content h1 {
+  font-size: 1.5em;
+  font-family: "Zain", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #f7ab14;
+  line-height: 1.6;
+}
+
+.text-content h2 {
+  font-size: 1.2em;
+  font-family: "Zain", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+
+  color: #4f4f4d;
+  line-height: 1.6;
+}
+
+.image-section {
+  margin-top: 200px;
+
+  float: right;
+  width: 40%;
+}
+.image-section img {
+  width: 640px;
+  height: 600px;
+}
+.slide {
+  position: relative;
+  text-align: center;
+}
+
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slide {
+  display: none;
+}
+
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slide {
+  display: none;
+  position: relative;
+}
+
+.fade {
+  animation: fadeEffect 1.5s ease-in-out;
+}
+
+@keyframes fadeEffect {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.logo-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.logo-text {
+  font-size: 2rem;
+  font-family: "Zain", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin: 0;
+}
+
+.logo-text2 {
+  font-size: 4rem;
+  font-family: "Zain", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin: 0;
+}
+
+.slide img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.slide.active {
+  display: block;
+}
+/* From Uiverse.io by Gaurav-WebDev */
+.button {
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.button:hover {
+  box-shadow: 0.5px 0.5px 150px #252525;
+}
+
+.type1::after {
+  content: "اضغط هنا";
+  height: 50px;
+  width: 150px;
+  background-color: #727272;
+  color: #fff;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: translateY(50px);
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.type1::before {
+  content: "قم بتسجيل الدخول";
+  height: 50px;
+  width: 150px;
+  background-color: #f7ab14;
+  color: #ffffff;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: translateY(0px) scale(1.2);
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.type1:hover::after {
+  transform: translateY(0) scale(1.2);
+}
+
+.type1:hover::before {
+  transform: translateY(-50px) scale(0) rotate(120deg);
+}
+.header {
+  position: relative;
+  background: url("header-background.jpg") no-repeat center center/cover; /* Background image for header */
+  padding: 50px 20px 100px; /* Extra padding at the bottom for the cards */
+  color: #fff;
+  text-align: center; /* Center align any other header content */
+}
+
+.cards-container {
+  display: flex;
+  justify-content: space-around;
+  background-image: url(images/cards\ background.png);
+  width: 1300px; /* Set the width to 80% */
+  margin: 0 auto; /* Center the container */
+  position: absolute;
+  left: 50%;
+  bottom: -150px; /* Position the container to overlap with the section below */
+  transform: translateX(-50%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Slight shadow for better visibility */
+}
+
+.card {
+  text-align: center;
+  padding: 20px;
+  width: 30%;
+  position: relative;
+  z-index: 1;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("pattern.png") repeat; /* Placeholder for background pattern */
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.icon-container img {
+  width: 100%; /* Let the image take up the full width of the container */
+  height: 100%; /* Ensure it takes up the full height */
+  object-fit: contain; /* Make sure the image fits inside the circle without stretching */
+  padding: 10px; /* Add some padding inside the circle to control the size of the icon */
+}
+
+.icon-container {
+  background-color: #f4b400; /* Yellow color similar to the image */
+  border-radius: 50%;
+  width: 90px;
+  height: 90px; /* Fixed size for the circle */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center; /* Center the icon within the circle */
+  margin-bottom: 15px;
+  overflow: hidden; /* Ensure the icon stays within the circle */
+}
+.cardp {
+  font-size: 15px;
+  font-family: "Zain", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin: 0;
+}
+
+h3 {
+  font-size: 2rem;
+  color: #333333;
+  margin: 0;
+}
+
+.hero-section {
+  background-color: #f8f9fa;
+  padding: 50px 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+header .subtitle {
+  color: #2d7734;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+header .main-title {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+header .description {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.hero-image img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.hero-text {
+  max-width: 500px;
+  margin-left: 30px;
+}
+
+.hero-text p {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  background-color: #2d7734;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta .icon {
+  margin-right: 10px;
+}
+
+.cta:hover {
+  background-color: #256628;
+}
+
+.footer-note {
+  margin-top: 40px;
+  color: #333;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.footer-note .globe-icon {
+  margin-right: 10px;
+}
+
+.ablogo {
+  margin-bottom: 120px;
+  height: 100px;
+}
+#abtext2 {
+  font-size: 1rem;
+  font-family: "Zain", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.about-us .container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.text-content {
+  flex: 1;
+}
+
+.logo-and-text {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-and-text .ablogo {
+  max-width: 100px; /* Adjust size as needed */
+  height: auto;
+}
+
+.text-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-section img {
+  max-width: 100%;
+  border-radius: 10px;
+  width: 900px;
+  height: auto;
+}
+.services-section {
+  text-align: center;
+  padding: 50px 0;
+  background-image: url("/images/what\ we\ offer.png"); /* Replace with your image */
+  background-size: cover;
+  background-position: center;
+  height: 550px;
+  background-repeat: no-repeat;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.services-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background-color: white; /* Ensure the card has a white background */
+  background-image: url("/images/allah.png"); /* Replace with your image */
+  background-size: 120px; /* Adjust this size based on your image */
+  background-position: left 100px; /* Center the image horizontally, adjust the vertical position */
+  background-repeat: no-repeat; /* Prevents the background from repeating */
+  color: #000;
+  border-radius: 8px;
+  width: 350px;
+  min-height: 150px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  padding: 30px;
+}
+
+.service-icon {
+  margin-right: 20px;
+  align-self: flex-end;
+}
+
+.service-icon img {
+  margin-left: 70px;
+
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.service-title,
+.service-description,
+.read-more {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.service-title {
+  font-size: 1.8em;
+  font-family: "Zain", sans-serif;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.service-description {
+  font-size: 1em;
+  font-family: "Zain", sans-serif;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 50px;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.read-more {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 30px;
+  font-size: 1rem;
+  color: #1f8b4c;
+  text-decoration: none;
+  background-color: #f1f1f1;
+  height: 50px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.read-more span {
+  margin-left: 5px;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-5px);
+  }
+  75% {
+    transform: translateY(5px);
+  }
+}
+
+.service-card:hover .service-icon,
+.service-card:hover .service-title,
+.service-card:hover .service-description,
+.service-card:hover .read-more {
+  animation: shake 0.4s ease-in-out;
+}
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.section-container {
+  background-image: url(/images/cards\ background2.png.jpg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: white;
+  border-radius: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  width: 80%; /* Ensure the section takes 80% of the page width */
+  margin: 2rem auto; /* Center the section horizontally */
+  min-height: 300px;
+  max-width: 1200px; /* Optionally limit max width */
+}
+
+@media (min-width: 768px) {
+  .section-container {
+    flex-direction: row;
+    height: 300px; /* Maintain consistent height on larger screens */
+  }
+}
+
+/* Left Section */
+.left-section {
+  text-align: center;
+  max-width: 300px;
+}
+
+@media (min-width: 768px) {
+  .left-section {
+    text-align: left;
+  }
+}
+
+.title {
+  font-size: 2.5rem; /* Adjust font size for better scaling */
+  font-weight: bold;
+}
+
+.description {
+  margin-top: 0.5rem;
+  color: #d1d5db;
+}
+
+.student-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.icon-container {
+  background-color: #fbbf24;
+  padding: 1rem;
+  border-radius: 50%;
+}
+
+.student-number {
+  font-size: 2.5rem; /* Slightly larger for emphasis */
+  font-weight: bold;
+}
+
+.student-text {
+  font-size: 1rem;
+}
+
+/* Right Section */
+.right-section {
+  background-color: white;
+  color: black;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+}
+
+.rating-info,
+.passout-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rating-number-container,
+.passout-number-container {
+  background-color: #fbbf24;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.rating-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.rating-label {
+  font-size: 0.75rem;
+}
+
+.rating-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.rating-description {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.passout-number-container {
+  background-color: #16a34a;
+}
+
+.passout-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.passout-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.passout-description {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Utility Classes */
+.bg-gray-100 {
+  background-color: #f3f4f6;
+}
+.container4 {
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.container4 h1 {
+  font-size: 50px;
+  font-family: Roboto, sans-serif;
+  text-align: center;
+  margin-bottom: 60px;
+  color: #28292c;
+  font-weight: 600;
+  padding: 20px 10px;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.container4 .statics {
+  display: flex;
+  justify-content: center; /* Center the boxes */
+  align-items: center;
+  padding: 10px;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between the boxes */
+}
+
+.statics-box {
+  background-color: #3f3f3f;
+  border-radius: 25px;
+  width: 280px;
+  box-shadow: -3px 2px 27.5px 12px #c6c6c6;
+  height: 112px;
+  height: 112px;
+  color: white;
+  text-align: center;
+  transition: all 0.3s;
+  margin: 10px; /* Additional margin to ensure spacing */
+  animation: move 10s infinite;
+}
+
+.statics-box:hover {
+  background-color: #3f3f3f;
+  transition: all 0.3s;
+  scale: 1.12;
+  box-shadow: -4px 5px 22.5px -1px #636262;
+}
+
+.earnings-title {
+  font-family: "Inter", Helvetica, Roboto, "Segoe UI", Oxygen, Ubuntu,
+    sans-serif;
+  color: #ffffff;
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+.earnings-value {
+  font-family: "Inter", Helvetica, Roboto, "Segoe UI", Oxygen, Ubuntu,
+    sans-serif;
+  color: #ffffff;
+  margin-top: 10px;
+  font-size: 45px;
+}

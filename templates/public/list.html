@@ -1,0 +1,77 @@
+{% extends 'public/base.html' %} {% block content %}
+<div>
+      <section class="h-96 relative">
+            <div class="swiper swiper-initialized swiper-horizontal h-full relative swiper-backface-hidden">
+                  <div class="swiper-wrapper">
+                        <div
+                              class="swiper-slide swiper-slide-active relative flex items-center justify-center w-full h-full">
+                              <img alt="banner" loading="lazy" decoding="async" data-nimg="fill"
+                                    class="object-cover absolute top-0 left-0 w-full h-full" sizes="100vw"
+                                    src="{{ url_for('static', filename='images/banner.png') }}"
+                                    srcset="{{ url_for('static', filename='images/banner.png') }} 640w, {{ url_for('static', filename='images/banner.png') }} 750w, {{ url_for('static', filename='images/banner.png') }} 828w, {{ url_for('static', filename='images/banner.png') }} 1080w, {{ url_for('static', filename='images/banner.png') }} 1200w, {{ url_for('static', filename='images/banner.png') }} 1920w, {{ url_for('static', filename='images/banner.png') }} 2048w, {{ url_for('static', filename='images/banner.png') }} 3840w"
+                                    style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                        </div>
+                  </div>
+            </div>
+            <div class="absolute top-0 left-0 w-full h-full bg-[#01003880] z-20"></div>
+            <div
+                  class="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-background font-bold font-cinzel capitalize text-2xl md:text-4xl lg:text-6xl">
+                  <h2 class="text-center">{{ PageName }}</h2>
+                  <div class="capitalize text-lg font-cairo font-normal flex items-center gap-3 my-5 justify-center">
+                        <a class="transition-colors duration-200 hover:text-primary" href="">Home</a>
+                        <p class="text-primary font-medium">//</p>
+                        <div>{{ PageName }}</div>
+                  </div>
+            </div>
+      </section>
+      <div class="max-w-lg mx-auto my-10" dir="rtl">
+            <input placeholder="بحث" type="text" value="">
+      </div>
+      <div class="mx-auto max-w-screen mb-20 my-10 flex flex-col gap-8 items-center">
+            <div class="flex items-center gap-2 sm:gap-5" dir="rtl">
+                  <button
+                        class="main__button text-white shadow-sm tracking-wide leading-9 border-primary bg-primary transition-colors duration-300 hover:bg-transparent border hover:text-primary rounded-full max-sm:p-2 max-sm:text-xs p-1 px-10 capitalize font-medium active">الأحدث</button>
+                  <button
+                        class="main__button text-white shadow-sm tracking-wide leading-9 border-primary bg-primary transition-colors duration-300 hover:bg-transparent border hover:text-primary rounded-full max-sm:p-2 max-sm:text-xs p-1 px-10 capitalize font-medium">المشاهدات</button>
+                  <button
+                        class="main__button text-white shadow-sm tracking-wide leading-9 border-primary bg-primary transition-colors duration-300 hover:bg-transparent border hover:text-primary rounded-full max-sm:p-2 max-sm:text-xs p-1 px-10 capitalize font-medium">الشائع</button>
+                  <button
+                        class="main__button text-white shadow-sm tracking-wide leading-9 border-primary bg-primary transition-colors duration-300 hover:bg-transparent border hover:text-primary rounded-full max-sm:p-2 max-sm:text-xs p-1 px-10 capitalize font-medium">أ-ي</button>
+            </div>
+      </div>
+      <div class="container px-3 pb-20 flex flex-col gap-32" dir="rtl">
+            <div class="md:grid flex flex-col gap-y-10 gap-10 md:grid-cols-[repeat(auto-fill,minmax(350px,1fr))]">
+                  {% for post in posts %}
+                  <article class="flex flex-col h-full w-full gap-2 justify-between">
+                        <div class="flex flex-col gap-4">
+                              {% if post.banner %}
+                              <div class="overflow-hidden min-w-60 aspect-[4/3] rounded-[40px] group relative">
+
+                                    <img alt="{{ post.title }}" loading="lazy" decoding="async" data-nimg="fill"
+                                          class="object-cover group-hover:scale-105 transition-all duration-700 ease-out"
+                                          sizes="100vw" src="{{ url_for('uploaded_file', filename=post.banner) }}"
+                                          style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                              </div>
+                              {% endif %}
+                              <div class="flex flex-col gap-2">
+                                    <p class="flex [&>span]:pr-6 cursor-pointer text-gray">
+                                          <span>{{ post.created_at.strftime('%b %d, %Y') }}</span>
+                                    </p>
+                                    <div class="flex justify-between">
+                                          <div>
+                                                <h2 class="font-medium text-lg md:text-xl capitalize text-foreground">
+                                                      {{ post.title }}</h2>
+                                                <p class="text-dimmed font-normal line-clamp-2">{{ post.content }}</p>
+                                          </div>
+                                    </div>
+                                    <a target="_self"
+                                          class="pl-12 hover:before:bg-secondary before:transition-colors before:duration-200 flex text-primary relative before:content-[''] before:absolute before:bg-primary before:h-[2px] before:rounded-full before:w-10 before:top-1/2 before:-translate-y-1/2 before:left-0 transition-colors duration-200 text-lg hover:text-secondary font-medium"
+                                          href="/post/{{ post.id }}">المزيد</a>
+                              </div>
+                        </div>
+                  </article>
+                  {% endfor %}
+            </div>
+      </div>
+</div>
+{% endblock %}
